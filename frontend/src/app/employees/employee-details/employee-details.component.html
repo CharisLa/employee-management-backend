@@ -1,0 +1,46 @@
+<section class="details-card" *ngIf="!loading(); else loadingTpl">
+  <ng-container *ngIf="employee() as employee; else errorTpl">
+    <h2>{{ employee.name }}</h2>
+    <p class="subtitle">{{ employee.position || '—' }}</p>
+
+    <dl>
+      <div>
+        <dt>Email</dt>
+        <dd>{{ employee.email }}</dd>
+      </div>
+      <div>
+        <dt>Position</dt>
+        <dd>{{ employee.position || 'Not specified' }}</dd>
+      </div>
+      <div>
+        <dt>Salary</dt>
+        <dd>{{ employee.salary | number: '1.2-2' }}</dd>
+      </div>
+      <div>
+        <dt>Created</dt>
+        <dd>{{ employee.createdAt | date: 'medium' }}</dd>
+      </div>
+      <div>
+        <dt>Last Updated</dt>
+        <dd>{{ employee.updatedAt | date: 'medium' }}</dd>
+      </div>
+    </dl>
+
+    <div class="actions">
+      <button type="button" class="primary" (click)="edit()">Edit</button>
+      <button type="button" class="danger" (click)="delete()">Delete</button>
+      <button type="button" class="secondary" (click)="back()">Back</button>
+    </div>
+  </ng-container>
+</section>
+
+<ng-template #loadingTpl>
+  <p class="status">Loading employee details…</p>
+</ng-template>
+
+<ng-template #errorTpl>
+  <p class="status error" *ngIf="error(); else missing"> {{ error() }} </p>
+  <ng-template #missing>
+    <p class="status error">Employee not found.</p>
+  </ng-template>
+</ng-template>

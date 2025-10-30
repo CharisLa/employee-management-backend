@@ -1,0 +1,13 @@
+<header class="app-header">
+  <div class="brand">
+    <span class="title">{{ title }}</span>
+  </div>
+  <nav class="nav-links">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Employees</a>
+    <a routerLink="/employees/new" routerLinkActive="active">Add Employee</a>
+  </nav>
+</header>
+
+<main class="app-content">
+  <router-outlet />
+</main>

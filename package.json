@@ -1,0 +1,25 @@
+{
+  "name": "employee-management-backend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "db:init": "npx sequelize-cli init",
+    "db:migrate": "npx sequelize-cli db:migrate --config \"config/config.cjs\"",
+    "db:migrate:undo": "npx sequelize-cli db:migrate:undo --config \"config/config.cjs\""
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^4.21.1",
+    "express-validator": "^7.2.1",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.11.3",
+    "sequelize": "^6.37.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7",
+    "sequelize-cli": "^6.6.2"
+  }
+}

@@ -1,0 +1,54 @@
+<section class="list-card">
+  <header>
+    <div>
+      <h2>Employees</h2>
+      <p>Browse, edit, or remove employees from the system.</p>
+    </div>
+    <button type="button" class="primary" (click)="goToCreate()">+ Add Employee</button>
+  </header>
+
+  <div class="status" *ngIf="loading()">
+    Loading employees...
+  </div>
+
+  <div class="status error" *ngIf="!loading() && error()">
+    {{ error() }}
+    <button type="button" (click)="refresh()">Retry</button>
+  </div>
+
+  <table *ngIf="!loading() && employees().length; else emptyState">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Position</th>
+        <th>Salary</th>
+        <th aria-label="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees()">
+        <td>{{ employee.id }}</td>
+        <td>
+          <a [routerLink]="['/employees', employee.id]">
+            {{ employee.name }}
+          </a>
+        </td>
+        <td>{{ employee.email }}</td>
+        <td>{{ employee.position || '-' }}</td>
+        <td>{{ employee.salary | number: '1.2-2' }}</td>
+        <td class="actions">
+          <a class="link" [routerLink]="['/employees', employee.id, 'edit']">Edit</a>
+          <button type="button" class="link danger" (click)="deleteEmployee(employee)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #emptyState>
+    <p class="status empty" *ngIf="!loading()">No employees found. Start by adding one.</p>
+  </ng-template>
+</section>

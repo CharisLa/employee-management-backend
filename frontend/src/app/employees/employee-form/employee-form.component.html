@@ -1,0 +1,39 @@
+<section class="form-card">
+  <h2>{{ isEdit() ? 'Edit Employee' : 'Add Employee' }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-row">
+      <label for="name">Name *</label>
+      <input id="name" type="text" formControlName="name" placeholder="Jane Doe" />
+      <small class="error" *ngIf="form.controls.name.touched && form.controls.name.invalid">
+        Name is required.
+      </small>
+    </div>
+
+    <div class="form-row">
+      <label for="email">Email *</label>
+      <input id="email" type="email" formControlName="email" placeholder="jane@company.com" />
+      <small class="error" *ngIf="form.controls.email.touched && form.controls.email.invalid">
+        Provide a valid email address.
+      </small>
+    </div>
+
+    <div class="form-row">
+      <label for="position">Position</label>
+      <input id="position" type="text" formControlName="position" placeholder="Software Engineer" />
+    </div>
+
+    <div class="form-row">
+      <label for="salary">Salary</label>
+      <input id="salary" type="number" formControlName="salary" step="0.01" min="0" />
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="primary" [disabled]="loading()">Save</button>
+      <button type="button" class="secondary" (click)="cancel()">Cancel</button>
+    </div>
+
+    <p class="status" *ngIf="loading()">Saving…</p>
+    <p class="status error" *ngIf="error()">{{ error() }}</p>
+  </form>
+</section>
