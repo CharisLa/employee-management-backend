@@ -7,12 +7,12 @@ Backend: Node.js + Express + Sequelize + MySQL
 ToRun:
 ------
 cd c:\Users\Charis\employee-management-backend
-npm install
-npm run db:migrate
-npm run dev    # or npm start for a non-nodemon run
-Get-NetTCPConnection -LocalPort 4000 | Select-Object LocalAddress,LocalPort,OwningProcess
-Stop-Process -Id <PID>
-In a second terminal, cd frontend && npm start to verify the Angular app reaches the API.
+- npm install
+- npm run db:migrate
+- npm run dev    # or npm start for a non-nodemon run
+- Get-NetTCPConnection -LocalPort 4000 | Select-Object LocalAddress,LocalPort,OwningProcess
+- Stop-Process -Id <PID>
+- In a second terminal, cd frontend && npm start to verify the Angular app reaches the API.
 
 # Prerequisites
 - Node.js 18+ and npm
