@@ -4,6 +4,9 @@ Employee Management System
 Backend: Node.js + Express + Sequelize + MySQL
 ----------------------------------------------
 
+ToRun:
+------
+cd c:\Users\Charis\employee-management-backend
 npm install
 npm run db:migrate
 npm run dev    # or npm start for a non-nodemon run
